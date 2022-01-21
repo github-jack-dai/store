@@ -1,0 +1,37 @@
+package com.cy.store.mapper;
+
+import com.cy.store.entity.User;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import javax.annotation.Resource;
+
+//@RunWith(SpringRunner.class)表示启动这个单元测试类（单元测试类是不能够运行的），需要传递一个参数，必须是SpringRunner的实例类型
+
+@SpringBootTest//表示标注当前的类是一个测试类，不会随同项目一并打包发走
+@RunWith(SpringRunner.class)
+public class UserMapperTests {
+    @Resource
+    private UserMapper userMapper;
+
+    @Test
+    public void insert() {
+        User user = new User();
+        user.setUsername("tim");
+        user.setPassword("123456");
+        Integer rows = userMapper.insert(user);
+        System.out.println("rows=" + rows);
+    }
+
+    @Test
+    public void findByUsername() {
+        String username = "tim";
+        User result = userMapper.findByUsername(username);
+        System.out.println(result);
+    }
+
+}
+
