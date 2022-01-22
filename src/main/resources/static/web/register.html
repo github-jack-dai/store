@@ -20,6 +20,26 @@
 		<link rel="stylesheet" type="text/css" href="../css/layout.css" />
 		<link rel="stylesheet" type="text/css" href="../css/reg.css" />
 		<link rel="stylesheet" type="text/css" href="../css/footer.css" />
+		<script type="text/javascript">
+			$(function () {
+                $("#btn-reg").click(function() {
+                    $.ajax({
+                        url: "/users/reg",
+                        type: "POST",
+                        data: $("#form-reg").serialize(),
+                        dataType: "json",
+                        success: function(json) {
+                            if (json.state == 200) {
+                                alert("注册成功！");
+                                // location.href = "login.html";
+                            } else {
+                                alert("注册失败！" + json.message);
+                            }
+                        }
+                    });
+				})
+            });
+		</script>
 	</head>
 	<body>
 		<!--头部-->
