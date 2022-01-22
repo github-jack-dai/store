@@ -45,6 +45,9 @@ public class BaseController {
         }else if (e instanceof UserNotFoundException){
             result.setState(5002);
             result.setMessage("用户数据不存在的异常");
+        }else if (e instanceof UpdateException){
+            result.setState(5001);
+            result.setMessage("修改时产生未知的异常");
         }
         return result;
     }
